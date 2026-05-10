@@ -30,7 +30,7 @@ Description: Nginx Development Kit module
 Package: libnginx-mod-http-ndk-dev
 Architecture: all
 Multi-Arch: foreign
-Depends: libnginx-mod-http-ndk
+Depends: libnginx-mod-http-ndk,
          ${misc:Depends},
          ${shlibs:Depends},
 Description: Nginx Development Kit module - development files
