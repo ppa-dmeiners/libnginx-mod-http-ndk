@@ -1,0 +1,46 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/default.mk
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+BUILDDIR_SRC = $(CURDIR)/debian/build-src
+DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+objdir = $(CURDIR)/obj-$(DEB_BUILD_GNU_TYPE)
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	dh_auto_configure --buildsystem=nginx_mod
+	for have in NDK_SET_VAR NDK_UPSTREAM_LIST; do \
+	  ( \
+	    echo "#ifndef $$have"; \
+	    echo "#define $$have 1"; \
+	    echo "#endif"; \
+	    echo; \
+	  ) >> $(objdir)/ngx_auto_config.h; \
+	done
+
+override_dh_auto_build: build.src
+	dh_auto_build --buildsystem=nginx_mod
+
+build.src:
+	mkdir -p $(BUILDDIR_SRC)
+	cp -Pa $(CURDIR)/auto config ngx_auto_lib_core $(BUILDDIR_SRC)/
+	for i in src objs; do \
+	  find $(CURDIR)/$$i -type f -name '*.h' -printf "$$i/%P\0" | tar -C $(CURDIR) --null --files-from - -c | tar -C $(BUILDDIR_SRC)/ -x; \
+	done
+
+override_dh_clean:
+	rm -rf $(BUILDDIR_SRC)
+	dh_clean
+
+NGINX_VERSION = $(shell /usr/sbin/nginx -V 2>&1 | sed -E -ne 's|^nginx version: nginx/([^ ]+).*|\1|p')
+DEB_VERSION_EPOCH = $(call dpkg_late_eval,DEB_VERSION_EPOCH,echo '$(DEB_VERSION_EPOCH_UPSTREAM)' | sed -e 's/[^:]*$$//')
+DEB_VERSION_REVISION = $(call dpkg_late_eval,DEB_VERSION_REVISION,echo '$(DEB_VERSION_UPSTREAM_REVISION)' | sed -e 's/^.*-//')
+NGINX_DEB_VERSION = $(DEB_VERSION_EPOCH)$(DEB_VERSION_UPSTREAM)+$(NGINX_VERSION)-$(DEB_VERSION_REVISION)
+
+override_dh_gencontrol:
+	dh_gencontrol --remaining-packages -- -v$(NGINX_DEB_VERSION)
+

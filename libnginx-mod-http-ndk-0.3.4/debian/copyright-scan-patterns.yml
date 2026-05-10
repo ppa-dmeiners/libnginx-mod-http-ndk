@@ -1,0 +1,4 @@
+---
+ignore:
+  pattern:
+  - README_AUTO_LIB\.md

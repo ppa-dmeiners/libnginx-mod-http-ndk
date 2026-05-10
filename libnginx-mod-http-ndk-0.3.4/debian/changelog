@@ -1,0 +1,89 @@
+libnginx-mod-http-ndk (1:0.3.4-4build3) resolute; urgency=medium
+
+  * Rebuild against new nginx-abi-1.28.3-1.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 31 Mar 2026 20:31:03 +0200
+
+libnginx-mod-http-ndk (1:0.3.4-4build2) resolute; urgency=medium
+
+  * Rebuild against new nginx-abi-1.28.2.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 17 Feb 2026 22:01:25 +0100
+
+libnginx-mod-http-ndk (1:0.3.4-4build1) resolute; urgency=medium
+
+  * Rebuild against new nginx 1.28.1.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 29 Dec 2025 14:11:28 +0100
+
+libnginx-mod-http-ndk (1:0.3.4-4) unstable; urgency=medium
+
+  * d/watch: rewrite to version 5, use Github uscan-template
+
+ -- Jan Mojžíš <janmojzis@debian.org>  Thu, 11 Sep 2025 16:45:47 +0200
+
+libnginx-mod-http-ndk (1:0.3.4-3) unstable; urgency=medium
+
+  * Rebuild with nginx-dev 1.28.0-5
+  * d/gbp.conf: dist = DEP14, debian-branch = debian/latest
+
+ -- Jan Mojžíš <janmojzis@debian.org>  Sun, 07 Sep 2025 18:26:33 +0200
+
+libnginx-mod-http-ndk (1:0.3.4-2) unstable; urgency=medium
+
+  * d/control: bump Standards-Version: 4.7.2, no changes
+
+ -- Jan Mojžíš <janmojzis@debian.org>  Fri, 11 Apr 2025 14:27:01 +0200
+
+libnginx-mod-http-ndk (1:0.3.4-1) unstable; urgency=medium
+
+  * New upstream version 0.3.4
+  * d/{control,copyright}: update my email to "janmojzis@debian.org"
+  * d/copyright: bump debian/* copyright year
+  * d/watch: use more generic template
+  * d/control: bump Standards-Version: 4.7.0, no changes
+  * d/gbp.conf: add [pull] track-missing = True
+
+ -- Jan Mojžíš <janmojzis@debian.org>  Fri, 21 Mar 2025 08:50:27 +0100
+
+libnginx-mod-http-ndk (1:0.3.3-1) unstable; urgency=medium
+
+  * New upstream version 0.3.3
+
+ -- Jan Mojžíš <jan.mojzis@gmail.com>  Mon, 18 Dec 2023 16:23:15 +0100
+
+libnginx-mod-http-ndk (1:0.3.2-5) unstable; urgency=medium
+
+  * d/control: remove Build-Depends nginx-abi-1.24.0-1
+
+ -- Jan Mojžíš <jan.mojzis@gmail.com>  Sat, 07 Oct 2023 15:31:27 +0200
+
+libnginx-mod-http-ndk (1:0.3.2-4) unstable; urgency=medium
+
+  * NEW ABI: rebuild with nginx-abi-1.24.0-1
+
+ -- Jan Mojžíš <jan.mojzis@gmail.com>  Tue, 27 Jun 2023 23:16:39 +0200
+
+libnginx-mod-http-ndk (1:0.3.2-3) unstable; urgency=medium
+
+  * d/t/generic rework. The test now checks module after
+    installation/reload/restart.
+  * d/control: bump Standards-Version: 4.6.2, no changes
+  * d/gbb.conf: switched to debian branch main (debian-branch = main)
+  * d/copyright: bump my copyright year
+  * NEW ABI: rebuild with nginx-abi-1.22.1-7
+
+ -- Jan Mojžíš <jan.mojzis@gmail.com>  Mon, 13 Feb 2023 12:56:32 +0100
+
+libnginx-mod-http-ndk (1:0.3.2-2) unstable; urgency=medium
+
+  * d/rules: enabled NDK upstream list module NDK_UPSTREAM_LIST
+  * d/control: added Multi-Arch: foreign
+
+ -- Jan Mojžíš <jan.mojzis@gmail.com>  Tue, 06 Dec 2022 17:28:22 +0100
+
+libnginx-mod-http-ndk (1:0.3.2-1) experimental; urgency=medium
+
+  * Initial release. (Closes: 1024150)
+
+ -- Jan Mojžíš <jan.mojzis@gmail.com>  Wed, 30 Nov 2022 14:46:55 +0100
