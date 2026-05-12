@@ -1,3 +1,9 @@
+libnginx-mod-http-ndk (1:0.3.4-4+ubuntu24.04.1+deb.meiners.net+1.30.0) resolute; urgency=medium
+
+  * build against nginx 1.30.0
+
+ -- David Meiners <david@meiners.net>  Sun, 10 May 2026 22:55:51 +0000
+
 libnginx-mod-http-ndk (1:0.3.4-4build3) resolute; urgency=medium
 
   * Rebuild against new nginx-abi-1.28.3-1.
